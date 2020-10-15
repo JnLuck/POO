@@ -16,7 +16,7 @@ public class Main {
         do {
             System.out.println("***** CRUD MENU *****");
             System.out.println("1 CRUD PERSON");
-            System.out.println("2 CRUD PRODUCT");
+            System.out.println("2 CRUD ITEMS");
             System.out.println("0 Exit ");
             System.out.println("Choice option: ");
             opt = input.nextInt();
@@ -172,14 +172,21 @@ public class Main {
                                 System.out.print("Familia: ");
                                 p.setFamilia(input.nextLine());
 
-                                System.out.print("Precio: ");
-                                try {
-                                    p.setPrecio(input.nextInt());
-                                    dataI.create(p);
-                                } catch (Exception e) {
-                                    input.nextLine(); // Limpiar el buffer
-                                    System.out.print("Debe ser numero");
-                                }
+                                boolean bandera02 = true;
+                                do {
+                                    System.out.print("Precio: ");
+                                    try {
+                                        p.setPrecio(input.nextInt());
+                                        dataI.create(p);
+                                        bandera02 = false;
+                                    } catch (Exception e) {
+                                        input.nextLine(); // Limpiar el buffer
+                                        System.out.print("Debe ser numero");
+                                        bandera02 = true;
+                                    }
+
+                                }while (bandera02);
+
                                 break;
 
                             case 3:
